@@ -77,15 +77,15 @@ const TestimonialsSection = () => {
               }}
             >
               <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 p-8 rounded-xl backdrop-blur-sm border border-blue-500/20 h-full"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-gradient-to-br from-[#1a2f23] to-[#2a3b2f] p-8 rounded-xl backdrop-blur-sm border border-[#52e500] shadow-lg h-full transition-transform duration-300 ease-in-out"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative w-16 h-16">
                     <img 
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-full h-full rounded-full object-cover"
+                      className="w-full h-full rounded-full object-cover shadow-lg"
                     />
                     <div className="absolute inset-0 rounded-full border-2 border-[#52e500] animate-pulse"></div>
                   </div>
@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
                     <p className="text-[#52e500]">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed">{testimonial.text}</p>
+                <p className="text-[#52e500] leading-relaxed">{testimonial.text}</p>
                 <div className="mt-4 text-[#52e500]">
                   <span className="text-2xl">★★★★★</span>
                 </div>

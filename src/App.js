@@ -9,7 +9,7 @@ import SponsorsSection from './components/SponsorsSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import SmoothScroll from './components/SmoothScroll';
 import Lenis from '@studio-freight/lenis';
-import RippleEffect from './components/RippleEffect';
+// import RippleEffect from './components/RippleEffect';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -176,8 +176,8 @@ const App = () => {
 
   return (
     <>
-      <SmoothScroll />
-      <RippleEffect />
+      {/* <SmoothScroll /> */}
+     {/* <RippleEffect />*/}
       <div className="min-h-screen bg-black text-white overflow-x-hidden" data-scroll-container>
         {/* Hero Section with Animated Background */}
         <header className="relative h-screen" data-scroll-section>
@@ -649,7 +649,7 @@ const App = () => {
         </section>
 
         {/* Stats Section with Counter Animation */}
-        <section className="py-20 bg-gradient-to-b from-black via-[#52e500]/5 to-[#1a2f23] relative" data-scroll-section>
+        <section className="py-20" style={{ background: 'radial-gradient(circle, rgba(82, 229, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 70%)', marginTop: '-20px' }} data-scroll-section>
           <div className="container mx-auto px-4">
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-4 gap-8"
