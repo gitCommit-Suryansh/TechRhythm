@@ -352,7 +352,7 @@ function Home() {
                       
                       {/* Prize Pool */}
                       <div className="mb-6">
-                        <span className="text-sm text-gray-400">Prize Pool</span>
+                        <span className="text-sm text-gray-400">Perks and Prizes</span>
                         <div className="text-2xl font-bold text-[#52e500]">{event.perks}</div>
                       </div>
                       
