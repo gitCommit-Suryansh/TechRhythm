@@ -468,10 +468,10 @@ function Home() {
               viewport={{ once: true }}
             >
               {[
-                { icon: Calendar, value: 3, label: "Days of Tech Innovation" },
+                { icon: Calendar, value: 2, label: "Days of Tech Innovation" },
                 { icon: Users, value: 2000, label: "Tech Enthusiasts" },
-                { icon: Trophy, value: 2, label: "Lakh Prize Pool" },
-                { icon: Rocket, value: 3, label: "Tech Events" }
+                { icon: Trophy, value: 3, label: "Lakh Prize Pool" },
+                { icon: Rocket, value: 5, label: "Tech Events" }
               ].map((stat, index) => (
                 <Card key={index}>
                   <CardContent>
@@ -549,17 +549,22 @@ function Home() {
                 <ul className="space-y-4">
                   <li>
                     <a href="mailto:esummit@itm.ac.in" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
-                      techrhythm@itm.ac.in
+                      codecraftsociety@itmuniversity.ac.in
                     </a>
                   </li>
                   <li>
-                    <a href="tel:+918750589268" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
+                    <a href="tel:+916265797401" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
                       +91 62657 97401
                     </a>
                   </li>
                   <li>
-                    <a href="tel:+917016204140" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
-                      +91 70005 90370
+                    <a href="tel:+917022721098" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
+                      +91 70227 21098
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+916268107784" className="text-gray-400 hover:text-[#52e500] transition-colors font-space-grotesk">
+                      +91 62681 07784
                     </a>
                   </li>
                 </ul>
