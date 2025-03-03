@@ -2,6 +2,7 @@ import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Navbar() {
   const { scrollY } = useScroll();
@@ -19,6 +20,8 @@ function Navbar() {
   };
   // Add this state at the top of your App component
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const token = Cookies.get("token");
 
   return (
     <>
@@ -58,15 +61,27 @@ function Navbar() {
               </motion.button>
             ))}
 
-            <Link to="/Signup">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#52e500] text-black px-6 py-2 rounded-lg font-bold hover:bg-[#3ba000] transition-colors duration-300 shadow-lg hover:shadow-[#52e500]/50"
-              >
-                Register Now
-              </motion.button>
-            </Link>
+            {!token ? (
+              <Link to="/Signup">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Register Now
+                </motion.button>
+              </Link>
+            ) : (
+              <Link to="/Passes">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Passes
+                </motion.button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,15 +146,27 @@ function Navbar() {
                   </motion.button>
                 )
               )}
-              <Link to="/Signup">
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Register Now
-                </motion.button>
-              </Link>
+              {!token ? (
+                <Link to="/Signup">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Register Now
+                  </motion.button>
+                </Link>
+              ) : (
+                <Link to="/Passes">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Passes
+                  </motion.button>
+                </Link>
+              )}
             </div>
           </motion.div>
         </div>

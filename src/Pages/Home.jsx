@@ -1,11 +1,13 @@
 import React from 'react'
 import { motion, useInView } from 'framer-motion';
-import { Calendar, Users, Trophy, Rocket, ArrowRight, Code, Lightbulb, Brain } from 'lucide-react';
+import { Calendar, Users, Trophy, Rocket, ArrowRight, Code, Lightbulb, Brain, Link } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { useState,useEffect,useRef } from 'react';
 import SponsorsSection from '../components/SponsorsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import Navbar from '../components/navigation/Navbar';
+import Cookies from "js-cookie";
+
 
 
 function Home() {
@@ -40,9 +42,9 @@ function Home() {
       // Speakers data
       const speakers = [
         {
-          name: "Dr. Rajesh Kumar",
-          designation: "Technical Director, Microsoft India",
-          image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+          name: "Harsh Vandana Sharma",
+          designation: "Sheryians Coding School -Youtuber",
+          image: "/harsh_sharma.png",
           topic: "Future of Cloud Computing"
         },
         {
@@ -89,6 +91,10 @@ function Home() {
       const speakersRef = useRef(null);
       const sponsorsRef = useRef(null);
     
+      const token = Cookies.get("token");
+
+
+
   return (
     <>
     <div className="min-h-screen bg-black text-white overflow-x-hidden" data-scroll-container>
@@ -230,7 +236,7 @@ function Home() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-[#52e500] to-blue-500 px-8 py-3 rounded-full text-black font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#52e500]/20"
               >
-                Register Now 
+                Register Now
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </motion.button>
               
@@ -356,8 +362,8 @@ function Home() {
                         whileTap={{ scale: 0.95 }}
                         className="w-full bg-gradient-to-r from-[#52e500] to-blue-500 text-black px-6 py-3 rounded-lg font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center justify-center gap-2 group"
                       >
-                        Register Now
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Register Now
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </motion.button>
                     </div>
                   </div>

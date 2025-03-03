@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login'
+import Passes from './Pages/Passes';
 
 
 // Register GSAP plugins
@@ -76,6 +77,7 @@ const App = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/Signup' element={<Signup/>}/>
         <Route path='/Login' element={<Login/>}/>
+        <Route path='/Passes' element={<Passes/>}/>
       </Routes>
     </Router>
     
