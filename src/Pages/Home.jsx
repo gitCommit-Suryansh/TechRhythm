@@ -21,21 +21,21 @@ function Home() {
           title: "Kurukshetra",
           icon: Code,
           description: "24-hour hackathon to build innovative solutions for real-world problems",
-          prize: "₹3,00,000",
+          perks: "₹1,00,000+",
           color: "from-purple-600 to-blue-600"
         },
         {
           title: "Manthan",
           icon: Lightbulb,
           description: "Present your groundbreaking startups projects and prototypes",
-          prize: "₹2,00,000",
+          perks: "Funding 20 lakhs+",
           color: "from-cyan-600 to-green-600"
         },
         {
           title: "EkLavya",
           icon: Brain,
           description: "Individual technical challenge for coding wizards",
-          prize: "₹1,00,000",
+          perks: "Internship and PPO Opportunity",
           color: "from-orange-600 to-red-600"
         }
       ];
@@ -218,7 +218,7 @@ function Home() {
                 <span className="relative text-gray-300 font-space-grotesk tracking-wide">
                   <span className="text-[#52e500] font-semibold">Code</span> •{' '}
                   <span className="text-blue-400 font-semibold">Innovate</span> •{' '}
-                  <span className="text-purple-400 font-semibold">Create</span>
+                  <span className="text-purple-400 font-semibold">Collaborate</span>
                 </span>
               </motion.p>
             </motion.div>
@@ -353,7 +353,7 @@ function Home() {
                       {/* Prize Pool */}
                       <div className="mb-6">
                         <span className="text-sm text-gray-400">Prize Pool</span>
-                        <div className="text-2xl font-bold text-[#52e500]">{event.prize}</div>
+                        <div className="text-2xl font-bold text-[#52e500]">{event.perks}</div>
                       </div>
                       
                       {/* Register Button */}
