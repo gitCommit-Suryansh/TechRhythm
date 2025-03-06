@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { QrCode } from "lucide-react"; 
 import axios from "axios";
+import { Html5QrcodeScanner } from "html5-qrcode";
 
 const VerifyPass = () => {
   const [qrValue, setQrValue] = useState("");
