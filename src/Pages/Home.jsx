@@ -94,7 +94,6 @@ function Home() {
     
       const token = Cookies.get("token");
       const decrypted=decodeToken(token)
-      console.log(decrypted)
 
 
 
@@ -139,7 +138,7 @@ function Home() {
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.h2 
-                  className="text-xl md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] via-blue-400 to-[#52e500] bg-clip-text text-transparent"
+                  className="text-base md:text-xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] via-blue-400 to-[#52e500] bg-clip-text text-transparent"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -228,29 +227,46 @@ function Home() {
 
             {/* Updated buttons container */}
             <motion.div 
-              className="flex flex-col md:flex-row gap-4 mt-12"
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-              transition={{ delay: 0.6 }}
-            >
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#52e500] to-blue-500 px-8 py-3 rounded-full text-black font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#52e500]/20"
-              >
-                Register Now
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </motion.button>
-              
-              <motion.button 
-                whileHover={{ scale: 1.05, backgroundColor: "rgba(82, 229, 0, 0.1)" }}
-                whileTap={{ scale: 0.95 }}
-                className="border border-[#52e500] px-8 py-3 rounded-full transition-all duration-300 text-[#52e500] hover:shadow-lg hover:shadow-[#52e500]/20"
-              >
-                Learn More
-              </motion.button>
-            </motion.div>
+  className="flex flex-col md:flex-row gap-4 mt-12"
+  variants={fadeInUp}
+  initial="initial"
+  animate="animate"
+  transition={{ delay: 0.6 }}
+>
+  {token ? (
+    <a href="/Passes" className="no-underline">
+      <motion.button 
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="w-full md:w-auto bg-gradient-to-r from-[#52e500] to-blue-500 px-8 py-3 rounded-full text-black font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#52e500]/20"
+      >
+        <span className="text-black">Buy Passes</span>
+        <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+      </motion.button>
+    </a>
+  ) : (
+    <a href="/Signup" className="no-underline">
+      <motion.button 
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="w-full md:w-auto bg-gradient-to-r from-[#52e500] to-blue-500 px-8 py-3 rounded-full text-black font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#52e500]/20"
+      >
+        <span className="text-black">Register Now</span>
+        <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+      </motion.button>
+    </a>
+  )}
+
+  <motion.button 
+    whileHover={{ scale: 1.05, backgroundColor: "rgba(82, 229, 0, 0.1)" }}
+    whileTap={{ scale: 0.95 }}
+    className="border border-[#52e500] px-8 py-3 rounded-full transition-all duration-300 text-[#52e500] hover:shadow-lg hover:shadow-[#52e500]/20"
+    
+  >
+    Learn More
+  </motion.button>
+</motion.div>
+
 
             {/* Add floating tech elements */}
             <motion.div className="absolute inset-0 pointer-events-none">

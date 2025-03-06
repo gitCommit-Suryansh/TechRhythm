@@ -24,7 +24,6 @@ const PassDetails = () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/getuser/${user.id}`);
                 setPassDetails(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching pass details:", error);
             } finally {
