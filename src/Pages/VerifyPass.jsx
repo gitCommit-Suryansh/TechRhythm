@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { QrCode } from "lucide-react"; 
-import { Html5QrcodeScanner } from "html5-qrcode";
+import axios from "axios";
 
 const VerifyPass = () => {
-  const [qrValue, setQrValue] = useState(""); // Store QR code value
+  const [qrValue, setQrValue] = useState("");
+  const [verificationMessage, setVerificationMessage] = useState("");
   const [isScanning, setIsScanning] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const scannerRef = useRef(null);
 
   useEffect(() => {
@@ -16,10 +18,11 @@ const VerifyPass = () => {
       });
 
       scannerRef.current.render(
-        (decodedText) => {
+        async (decodedText) => {
           setIsScanning(false); // Stop scanning after first detection
           scannerRef.current.clear();
-          setQrValue(decodedText); // Set the decoded QR value
+          setQrValue(decodedText); // Display scanned QR value
+          handleScan(decodedText); // Call API
         },
         (errorMessage) => {
           console.error("QR Scan Error:", errorMessage);
@@ -28,6 +31,27 @@ const VerifyPass = () => {
     }
     return () => scannerRef.current?.clear();
   }, [isScanning]);
+
+  const handleScan = async (passId) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/verify/verifypass`,
+        { passId }
+      );
+
+      if (response.data.verified) {
+        setVerificationMessage("✅ Pass Verified Successfully!");
+        setIsVerified(true); // Show "Check-In" button
+      } else {
+        setVerificationMessage("❌ QR Verification Failed. Pass Not Found.");
+        setIsVerified(false);
+      }
+    } catch (error) {
+      console.error("Error verifying QR code:", error);
+      setVerificationMessage("⚠️ Error verifying QR code.");
+      setIsVerified(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
@@ -44,6 +68,7 @@ const VerifyPass = () => {
           <QrCode className="text-[#52e500] w-16 h-16" />
         </div>
         <p className="text-white text-center mb-4">Click the button below to open the scanner.</p>
+        
         <button
           onClick={() => setIsScanning(true)}
           className="bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors w-full"
@@ -60,21 +85,24 @@ const VerifyPass = () => {
           </motion.p>
         )}
 
-        {/* Commented out API call for now */}
-        {/* 
-        const handleScan = async (data) => {
-          try {
-            const response = await axios.post(
-              `${process.env.REACT_APP_BACKEND_URL}/verify/verifypass`,
-              { passId: data }
-            );
-            setVerificationMessage(response.status === 200 ? "QR Verified Successfully!" : "QR Verification Failed.");
-          } catch (error) {
-            console.error("Error verifying QR code:", error);
-            setVerificationMessage("Error verifying QR code.");
-          }
-        };
-        */}
+        {/* Show verification result */}
+        {verificationMessage && (
+          <motion.p className="mt-4 text-center text-lg text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            {verificationMessage}
+          </motion.p>
+        )}
+
+        {/* Show "Check-In" button only if pass is verified */}
+        {isVerified && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="bg-[#ffcc00] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#d4a600] transition-colors w-full mt-4"
+          >
+            ✅ Check-In Participant
+          </motion.button>
+        )}
       </motion.div>
     </div>
   );
