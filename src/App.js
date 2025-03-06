@@ -8,6 +8,8 @@ import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login'
 import Passes from './Pages/Passes';
+import PassDetails from './Pages/PassDetails';
+import VerifyPass from './Pages/VerifyPass';
 
 
 // Register GSAP plugins
@@ -32,13 +34,13 @@ const App = () => {
       if (heroImage) {
         gsap.to(heroImage, {
           yPercent: 50,
-          ease: "none",
-          scrollTrigger: {
+            ease: "none",
+            scrollTrigger: {
             trigger: heroImage,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
         });
       }
 
@@ -78,6 +80,8 @@ const App = () => {
         <Route path='/Signup' element={<Signup/>}/>
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Passes' element={<Passes/>}/>
+        <Route path='/myPasses' element={<PassDetails/>}/>
+        <Route path='/verifyPass' element={<VerifyPass/>}/>
       </Routes>
     </Router>
     

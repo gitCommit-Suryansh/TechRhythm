@@ -34,7 +34,7 @@ const Login = () => {
       );
 
       if (response.data.success) {
-        document.cookie = `token=${response.data.token}; path=/; max-age=360000; secure; samesite=strict`;
+        document.cookie = `token=${response.data.token}; path=/; max-age=86400; secure; samesite=strict`;
         navigate('/');
       } else {
         setError(response.data.message || 'Login failed');

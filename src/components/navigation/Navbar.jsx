@@ -61,6 +61,19 @@ function Navbar() {
               </motion.button>
             ))}
 
+            {/* My Passes Button */}
+            {token && (
+              <Link to="/myPasses">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  My Passes
+                </motion.button>
+              </Link>
+            )}
+
             {!token ? (
               <Link to="/Signup">
                 <motion.button
@@ -145,6 +158,18 @@ function Navbar() {
                     {item}
                   </motion.button>
                 )
+              )}
+              {/* My Passes Button in Mobile Menu */}
+              {token && (
+                <Link to="/myPasses">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    My Passes
+                  </motion.button>
+                </Link>
               )}
               {!token ? (
                 <Link to="/Signup">

@@ -7,6 +7,7 @@ import SponsorsSection from '../components/SponsorsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import Navbar from '../components/navigation/Navbar';
 import Cookies from "js-cookie";
+import decodeToken from '../utils/decodeToken'
 
 
 
@@ -92,6 +93,8 @@ function Home() {
       const sponsorsRef = useRef(null);
     
       const token = Cookies.get("token");
+      const decrypted=decodeToken(token)
+      console.log(decrypted)
 
 
 
