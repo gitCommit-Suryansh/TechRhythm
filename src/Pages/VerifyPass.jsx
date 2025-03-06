@@ -64,7 +64,7 @@ const VerifyPass = () => {
           onClick={() => setIsScanning(true)}
           className="bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors w-full"
         >
-          Open Scanner
+          Open Scanner.
         </button>
 
         {isScanning && <div id="qr-reader" className="mt-4"></div>}
