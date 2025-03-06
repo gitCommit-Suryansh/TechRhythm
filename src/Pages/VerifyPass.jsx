@@ -9,6 +9,9 @@ const VerifyPass = () => {
   const [verificationMessage, setVerificationMessage] = useState("");
   const [isScanning, setIsScanning] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+  const [userId, setUserId] = useState(null); // Store user ID after verification
+  const [checkInMessage, setCheckInMessage] = useState("");
+  const [isCheckedIn, setIsCheckedIn] = useState(false);
   const scannerRef = useRef(null);
 
   useEffect(() => {
@@ -42,15 +45,39 @@ const VerifyPass = () => {
 
       if (response.data.verified) {
         setVerificationMessage("✅ Pass Verified Successfully!");
-        setIsVerified(true); // Show "Check-In" button
+        setIsVerified(true); 
+        setUserId(response.data.userId); // Store userId for check-in
       } else {
         setVerificationMessage("❌ QR Verification Failed. Pass Not Found.");
         setIsVerified(false);
+        setUserId(null);
       }
     } catch (error) {
       console.error("Error verifying QR code:", error);
       setVerificationMessage("⚠️ Error verifying QR code.");
       setIsVerified(false);
+      setUserId(null);
+    }
+  };
+
+  const handleCheckIn = async () => {
+    if (!userId) return;
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/verify/checkIn`,
+        { userId }
+      );
+
+      if (response.data.message === "Check-in successful.") {
+        setCheckInMessage("✅ Participant Checked In Successfully!");
+        setIsCheckedIn(true);
+      } else {
+        setCheckInMessage("❌ Check-In Failed. Try Again.");
+      }
+    } catch (error) {
+      console.error("Error during check-in:", error);
+      setCheckInMessage("⚠️ Error during check-in.");
     }
   };
 
@@ -94,15 +121,23 @@ const VerifyPass = () => {
         )}
 
         {/* Show "Check-In" button only if pass is verified */}
-        {isVerified && (
+        {isVerified && !isCheckedIn && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             className="bg-[#ffcc00] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#d4a600] transition-colors w-full mt-4"
+            onClick={handleCheckIn}
           >
             ✅ Check-In Participant
           </motion.button>
+        )}
+
+        {/* Show check-in result */}
+        {checkInMessage && (
+          <motion.p className="mt-4 text-center text-lg text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            {checkInMessage}
+          </motion.p>
         )}
       </motion.div>
     </div>
