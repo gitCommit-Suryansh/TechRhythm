@@ -31,7 +31,7 @@ function Navbar() {
       >
         <div className="container mx-auto px-8 py-6 flex justify-between items-center">
           <motion.div
-            className="text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow"
+            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow"
             whileHover={{ scale: 1.05 }}
           >
             TECH-RHYTHM'25
