@@ -26,7 +26,7 @@ function Navbar() {
 
   const handleLogout = () => {
     Cookies.remove("token");
-    navigate("/Signin");
+    navigate("/Login");
   };
 
   return (
