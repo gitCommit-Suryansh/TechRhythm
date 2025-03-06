@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { QrCode } from "lucide-react"; 
+import { QrCode } from "lucide-react";
 import axios from "axios";
 import { Html5QrcodeScanner } from "html5-qrcode";
-
 
 const VerifyPass = () => {
   const [qrValue, setQrValue] = useState("");
@@ -46,7 +45,7 @@ const VerifyPass = () => {
 
       if (response.data.verified) {
         setVerificationMessage("✅ Pass Verified Successfully!");
-        setIsVerified(true); 
+        setIsVerified(true);
         setUserId(response.data.userId); // Store userId for check-in
       } else {
         setVerificationMessage("❌ QR Verification Failed. Pass Not Found.");
@@ -83,12 +82,16 @@ const VerifyPass = () => {
   };
 
   return (
-    
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, rotateY: -90 }}
         animate={{ opacity: 1, rotateY: 0 }}
-        transition={{ type: "spring", stiffness: 50, damping: 15, duration: 0.8 }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 15,
+          duration: 0.8,
+        }}
         className="w-full max-w-md bg-[#0a0a0a] border-2 border-[#52e500] rounded-3xl overflow-hidden shadow-2xl shadow-[#52e500]/30 p-6"
       >
         <h1 className="text-3xl font-bold text-[#52e500] mb-4 text-center">
@@ -97,8 +100,10 @@ const VerifyPass = () => {
         <div className="flex justify-center mb-4">
           <QrCode className="text-[#52e500] w-16 h-16" />
         </div>
-        <p className="text-white text-center mb-4">Click the button below to open the scanner.</p>
-        
+        <p className="text-white text-center mb-4">
+          Click the button below to open the scanner.
+        </p>
+
         <button
           onClick={() => setIsScanning(true)}
           className="bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors w-full"
@@ -106,21 +111,42 @@ const VerifyPass = () => {
           Open Scanner
         </button>
 
-        {isScanning && <div id="qr-reader" className="mt-4"></div>}
+        {isScanning && (
+          <div
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              padding: "10px",
+              borderRadius: "10px",
+            }}
+          >
+            <div id="qr-reader"></div>
+          </div>
+        )}
 
         {/* Display scanned QR value */}
         {qrValue && (
-          <motion.p className="mt-4 text-center text-lg text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.p
+            className="mt-4 text-center text-lg text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             Pass ID: <span className="font-bold text-[#52e500]">{qrValue}</span>
           </motion.p>
         )}
 
         {/* Show verification result */}
         {verificationMessage && (
-          <motion.p className="mt-4 text-center text-lg text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.p
+            className="mt-4 text-center text-lg text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             {verificationMessage}
           </motion.p>
-        )}  
+        )}
 
         {/* Show "Check-In" button only if pass is verified */}
         {isVerified && !isCheckedIn && (
@@ -137,7 +163,12 @@ const VerifyPass = () => {
 
         {/* Show check-in result */}
         {checkInMessage && (
-          <motion.p className="mt-4 text-center text-lg text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <motion.p
+            className="mt-4 text-center text-lg text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             {checkInMessage}
           </motion.p>
         )}
