@@ -76,7 +76,7 @@ const PassDetails = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black flex items-center justify-center p-4 perspective-1000">
+        <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4 perspective-1000">
             <motion.div
                 initial={{ opacity: 0, rotateY: -90 }}
                 animate={{ opacity: 1, rotateY: 0 }}
@@ -89,14 +89,15 @@ const PassDetails = () => {
                 className="w-full max-w-md transform rotate-0 hover:rotate-1 transition-transform duration-300 ease-in-out"
             >
                 <div className="relative bg-[#0a0a0a] border-2 border-[#52e500] rounded-3xl overflow-hidden shadow-2xl shadow-[#52e500]/30 p-6">
+                    
                     {/* Animated Grid Background */}
                     <div className="absolute inset-0 opacity-10 pointer-events-none">
                         <div className="absolute inset-0 bg-grid-[#52e500]/10"></div>
                     </div>
-
+    
                     {/* Neon Border Animation */}
                     <div className="absolute inset-0 border-4 border-transparent animate-neon-border"></div>
-
+    
                     {/* Header */}
                     <div className="relative z-10 mb-6">
                         <div className="flex justify-between items-center">
@@ -111,7 +112,7 @@ const PassDetails = () => {
                             ITM University, Gwalior
                         </p>
                     </div>
-
+    
                     {/* Pass Details */}
                     <div className="space-y-4 mb-6 relative z-10">
                         <div className="bg-[#1a1a1a] rounded-xl p-4 border border-[#52e500]/20">
@@ -140,7 +141,7 @@ const PassDetails = () => {
                             </div>
                         </div>
                     </div>
-
+    
                     {/* QR Code Section */}
                     <div className="flex justify-center mb-6 relative z-10">
                         <div className="bg-[#1a1a1a] p-4 rounded-xl border border-[#52e500]/30">
@@ -152,20 +153,34 @@ const PassDetails = () => {
                             />
                         </div>
                     </div>
-
+    
                     {/* Footer */}
                     <div className="text-center relative z-10">
                         <p className={`text-xs tracking-wider opacity-70 ${passDetails.checkedIn ? 'text-[#52e500]' : 'text-red-500'}`}>
                             DIGITAL EVENT PASS · {passDetails.checkedIn ? 'VERIFIED' : 'NOT VERIFIED'}
                         </p>
                     </div>
-
+    
                     {/* Glow Effect */}
                     <div className="absolute -inset-4 bg-[#52e500] rounded-3xl opacity-10 blur-3xl"></div>
                 </div>
             </motion.div>
+    
+            {/* Back to Home Button (Placed Below the Pass Card) */}
+            <div className="mt-6 text-center">
+                <Link to="/">
+                    <motion.button
+                        className="bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Go to Home
+                    </motion.button>
+                </Link>
+            </div>
         </div>
     );
+    
 };
 
 export default PassDetails;
