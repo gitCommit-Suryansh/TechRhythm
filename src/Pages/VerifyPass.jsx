@@ -33,9 +33,10 @@ const VerifyPass = () => {
   }, [isScanning]);
 
   const handleScan = async (data) => {
+    console.log(data)
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/verifyPass`,
+        `${process.env.REACT_APP_BACKEND_URL}/verify/verifypass`,
         { passId: data }
       );
       setVerificationMessage(response.status === 200 ? "QR Verified Successfully!" : "QR Verification Failed.");
