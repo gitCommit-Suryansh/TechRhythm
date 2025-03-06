@@ -4,6 +4,7 @@ import { QrCode } from "lucide-react";
 import axios from "axios";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
+
 const VerifyPass = () => {
   const [qrValue, setQrValue] = useState("");
   const [verificationMessage, setVerificationMessage] = useState("");
@@ -82,6 +83,7 @@ const VerifyPass = () => {
   };
 
   return (
+    
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, rotateY: -90 }}

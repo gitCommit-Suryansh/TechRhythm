@@ -72,7 +72,7 @@ function Navbar() {
               <Link to="/myPasses">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                  className="w-32 bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   My Passes
@@ -108,7 +108,7 @@ function Navbar() {
               <motion.button
                 onClick={handleLogout}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg--[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
               >
                 Logout
               </motion.button>
