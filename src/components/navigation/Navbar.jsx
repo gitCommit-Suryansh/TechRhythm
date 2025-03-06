@@ -80,16 +80,7 @@ function Navbar() {
               </Link>
             )}
 
-            {/* Logout Button */}
-            {token && (
-              <motion.button
-                onClick={handleLogout}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors mt-4"
-              >
-                Logout
-              </motion.button>
-            )}
+            
 
             {!token ? (
               <Link to="/Signup">
@@ -111,6 +102,16 @@ function Navbar() {
                   Passes
                 </motion.button>
               </Link>
+            )}
+            {/* Logout Button */}
+            {token && (
+              <motion.button
+                onClick={handleLogout}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg--[#52e500] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+              >
+                Logout
+              </motion.button>
             )}
           </div>
 
@@ -189,22 +190,13 @@ function Navbar() {
                 </Link>
               )}
               {/* Logout Button in Mobile Menu */}
-              {token && (
-                <motion.button
-                  onClick={handleLogout}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors mt-4"
-                >
-                  Logout
-                </motion.button>
-              )}
               {!token ? (
                 <Link to="/Signup">
                   <motion.button
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                     onClick={() => setIsMobileMenuOpen(false)}
-                  >
+                    >
                     Register Now
                   </motion.button>
                 </Link>
@@ -214,10 +206,19 @@ function Navbar() {
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                     onClick={() => setIsMobileMenuOpen(false)}
-                  >
+                    >
                     Passes
                   </motion.button>
                 </Link>
+              )}
+              {token && (
+                <motion.button
+                  onClick={handleLogout}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-[#52e500] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
+                >
+                  Logout
+                </motion.button>  
               )}
             </div>
           </motion.div>
