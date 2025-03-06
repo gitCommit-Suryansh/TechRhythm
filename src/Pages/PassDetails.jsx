@@ -156,7 +156,7 @@ const PassDetails = () => {
                     {/* Footer */}
                     <div className="text-center relative z-10">
                         <p className="text-[#52e500] text-xs tracking-wider opacity-70">
-                            DIGITAL EVENT PASS · VERIFIED
+                            DIGITAL EVENT PASS · {passDetails.checkedIn ? 'VERIFIED' : 'NOT VERIFIED'}
                         </p>
                     </div>
 
