@@ -35,7 +35,6 @@ const Signup = () => {
       college: collegeRef.current.value,
       password: passwordRef.current.value
     };
-    console.log(formData)
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/Signup`, formData);
