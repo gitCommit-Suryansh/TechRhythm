@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function Navbar() {
@@ -22,6 +22,12 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const token = Cookies.get("token");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    navigate("/Signin");
+  };
 
   return (
     <>
@@ -72,6 +78,17 @@ function Navbar() {
                   My Passes
                 </motion.button>
               </Link>
+            )}
+
+            {/* Logout Button */}
+            {token && (
+              <motion.button
+                onClick={handleLogout}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors mt-4"
+              >
+                Logout
+              </motion.button>
             )}
 
             {!token ? (
@@ -170,6 +187,16 @@ function Navbar() {
                     My Passes
                   </motion.button>
                 </Link>
+              )}
+              {/* Logout Button in Mobile Menu */}
+              {token && (
+                <motion.button
+                  onClick={handleLogout}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors mt-4"
+                >
+                  Logout
+                </motion.button>
               )}
               {!token ? (
                 <Link to="/Signup">
