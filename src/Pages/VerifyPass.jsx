@@ -90,7 +90,7 @@ const VerifyPass = () => {
         className="w-full max-w-md bg-[#0a0a0a] border-2 border-[#52e500] rounded-3xl overflow-hidden shadow-2xl shadow-[#52e500]/30 p-6"
       >
         <h1 className="text-3xl font-bold text-[#52e500] mb-4 text-center">
-          QR Code Scanner
+          Pass ID Scanner
         </h1>
         <div className="flex justify-center mb-4">
           <QrCode className="text-[#52e500] w-16 h-16" />
