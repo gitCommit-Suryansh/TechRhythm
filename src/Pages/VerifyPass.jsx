@@ -120,6 +120,13 @@ const VerifyPass = () => {
           </motion.p>
         )}
 
+        {/* Show user ID for testing purposes */}
+        {userId && (
+          <motion.p className="mt-2 text-center text-lg text-[#52e500]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            User ID: <span className="font-bold">{userId}</span>
+          </motion.p>
+        )}
+
         {/* Show "Check-In" button only if pass is verified */}
         {isVerified && !isCheckedIn && (
           <motion.button
