@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Rocket, Crown, ArrowRight } from "lucide-react";
+import { Shield, Rocket, Crown, ArrowRight,Check,X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 const Passes = () => {
@@ -34,7 +34,7 @@ const Passes = () => {
         { text: "Event Certificate", included: true },
         { text: "Seminar and Workshops", included: true },
         { text: "Goodies", included: true },
-        { text: "Breakfast", included: true },
+        { text: "Breakfast", included: false },
         { text: "Lunch and Dinner", included: false },
         { text: "Accommodation", included: false },
       ],
@@ -126,7 +126,10 @@ const Passes = () => {
                 <ul className="space-y-4 mb-8">
                   {pass.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-gray-300">
-                      <span className="font-space-grotesk">{feature.text}</span>
+                      <span className={`font-space-grotesk flex ${feature.included ? 'text-green-500' : 'text-red-500'}`}>
+                        {feature.included ? <Check /> : <X />}
+                        {feature.text}
+                      </span>
                     </li>
                   ))}
                 </ul>

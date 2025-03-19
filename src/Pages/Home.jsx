@@ -17,7 +17,7 @@ function Home() {
         animate: { y: 0, opacity: 1 },
         transition: { duration: 0.6, ease: "easeOut" }
       };
-      const events = [
+      const coreEvents = [
         {
           title: "Kurukshetra",
           icon: Code,
@@ -26,18 +26,51 @@ function Home() {
           color: "from-purple-600 to-blue-600"
         },
         {
-          title: "Manthan",
-          icon: Lightbulb,
-          description: "Present your groundbreaking startups projects and prototypes",
-          perks: "Funding 20 lakhs+",
-          color: "from-cyan-600 to-green-600"
-        },
-        {
           title: "EkLavya",
           icon: Brain,
           description: "Individual technical challenge for coding wizards",
           perks: "Internship and PPO Opportunity",
           color: "from-orange-600 to-red-600"
+        },
+        {
+          title: "Manthan",
+          icon: Brain,
+          description: "Present your groundbreaking startups projects and prototypes",
+          perks: "Funding 20lacs +",
+          color: "from-orange-600 to-red-600"
+        },
+        {
+          title: "AI Odyssey",
+          icon: Lightbulb,
+          description: "Create an AI model on the spot and deliver the required target.",
+          perks: "Internship Opportunity",
+          color: "from-cyan-600 to-green-600"
+        }
+      ];
+      const bonusEvents = [
+        {
+          title: "Cyber Warrior",
+          description: "Capture the Flag competition.",
+          perks: "₹10,000 Prize Pool",
+          color: "from-red-600 to-yellow-600"
+        },
+        {
+          title: "E-Sports",
+          description: "Competitive gaming event.",
+          perks: "₹20,000 Prize Pool",
+          color: "from-blue-600 to-purple-600"
+        },
+        {
+          title: "Workshops Seminars",
+          description: "Interactive sessions with industry experts.",
+          perks: "Certificates",
+          color: "from-green-600 to-yellow-600"
+        },
+        {
+          title: "Book Fair",
+          description: "Open throughout 48 hours.",
+          perks: "Explore a variety of books",
+          color: "from-purple-600 to-blue-600"
         }
       ];
       // Speakers data
@@ -317,26 +350,28 @@ function Home() {
           ))}
         </header>
         {/* Events Section */}
-        <section ref={eventsRef} className="py-20 relative" id="events" data-scroll-section>
+
+        <section className="py-20 relative" id="bonus-events" data-scroll-section>
           <div className="container mx-auto px-4">
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-5xl font-['Press_Start_2P'] text-center mb-16 text-[#52e500] pixel-shadow"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
             >
-              Technical Events
+              Core Events
             </motion.h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {events.map((event, index) => (
-                <motion.div 
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {coreEvents.map((event, index) => (
+                <motion.div
                   key={index}
                   className="event-card"
                   style={{ opacity: 0, y: 50 }}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
-                  transition={{ 
+                  transition={{
                     duration: 0.3,
                     type: "spring",
                     stiffness: 400,
@@ -346,7 +381,7 @@ function Home() {
                   <div className="relative h-full bg-gradient-to-br from-black/80 to-blue-900/40 rounded-xl overflow-hidden backdrop-blur-sm border border-[#52e500]/30">
                     {/* Animated Background */}
                     <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-                    <motion.div 
+                    <motion.div
                       className="absolute -right-10 -top-10 w-40 h-40 blur-2xl"
                       animate={{
                         background: [
@@ -356,33 +391,96 @@ function Home() {
                       }}
                       transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
                     />
-                    
+
                     <div className="relative p-8">
-                      {/* Icon */}
-                      <div className="mb-6">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#52e500] to-blue-500 p-3 flex items-center justify-center">
-                          <event.icon size={32} className="text-black" />
-                        </div>
-                      </div>
-                      
                       {/* Content */}
-                      <h3 className="text-2xl font-['Press_Start_2P'] mb-4 text-[#52e500]">{event.title}</h3>
+                      <h3 className="text-xl font-['Press_Start_2P'] mb-4 text-[#52e500]">{event.title}</h3>
                       <p className="text-gray-300 mb-6 leading-relaxed">{event.description}</p>
-                      
+
                       {/* Prize Pool */}
                       <div className="mb-6">
                         <span className="text-sm text-gray-400">Perks and Prizes</span>
                         <div className="text-2xl font-bold text-[#52e500]">{event.perks}</div>
                       </div>
-                      
+
                       {/* Register Button */}
                       <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="w-full bg-gradient-to-r from-[#52e500] to-blue-500 text-black px-6 py-3 rounded-lg font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center justify-center gap-2 group"
                       >
-                Register Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        Register Now
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Bonus Events Section */}
+        <section className="py-20 relative" id="bonus-events" data-scroll-section>
+          <div className="container mx-auto px-4">
+            <motion.h2
+              className="text-3xl md:text-5xl font-['Press_Start_2P'] text-center mb-16 text-[#52e500] pixel-shadow"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Bonus Events
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {bonusEvents.map((event, index) => (
+                <motion.div
+                  key={index}
+                  className="event-card"
+                  style={{ opacity: 0, y: 50 }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{
+                    duration: 0.3,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 17
+                  }}
+                >
+                  <div className="relative h-full bg-gradient-to-br from-black/80 to-blue-900/40 rounded-xl overflow-hidden backdrop-blur-sm border border-[#52e500]/30">
+                    {/* Animated Background */}
+                    <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                    <motion.div
+                      className="absolute -right-10 -top-10 w-40 h-40 blur-2xl"
+                      animate={{
+                        background: [
+                          `radial-gradient(circle, ${event.glowColor || '#52e500'}40 0%, transparent 70%)`,
+                          `radial-gradient(circle, ${event.glowColor || '#52e500'}20 30%, transparent 70%)`,
+                        ],
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                    />
+
+                    <div className="relative p-8">
+                      {/* Content */}
+                      <h3 className="text-xl font-['Press_Start_2P'] mb-4 text-[#52e500]">{event.title}</h3>
+                      <p className="text-gray-300 mb-6 leading-relaxed">{event.description}</p>
+
+                      {/* Prize Pool */}
+                      <div className="mb-6">
+                        <span className="text-sm text-gray-400">Perks and Prizes</span>
+                        <div className="text-2xl font-bold text-[#52e500]">{event.perks}</div>
+                      </div>
+
+                      {/* Register Button */}
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full bg-gradient-to-r from-[#52e500] to-blue-500 text-black px-6 py-3 rounded-lg font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center justify-center gap-2 group"
+                      >
+                        Register Now
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </motion.button>
                     </div>
                   </div>
