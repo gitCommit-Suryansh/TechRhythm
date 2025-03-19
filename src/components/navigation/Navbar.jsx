@@ -37,10 +37,11 @@ function Navbar() {
       >
         <div className="container mx-auto  py-6 flex justify-between items-center">
           <motion.div
-            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow"
+            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow "
+           
             whileHover={{ scale: 1.05 }}
           >
-            <img src="/logo.png" alt="" />
+            <Link to="/"><img src="/logo.png" alt="" style={{ scale: window.innerWidth < 768 ? 0.65 : 0.90 }} /></Link>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -56,7 +57,7 @@ function Navbar() {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <span className="relative z-10 text-white group-hover:text-[#52e500] transition-colors duration-300 font-space-grotesk">
-                  {item}
+                  <a href={`#${item.toLowerCase()}`}>{item}</a>
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-[#52e500]/0 border border-[#52e500]/0 rounded-lg group-hover:bg-[#52e500]/5 group-hover:border-[#52e500]/50"
@@ -113,6 +114,13 @@ function Navbar() {
                 Logout
               </motion.button>
             )}
+            <motion.div
+            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow "
+           
+            whileHover={{ scale: 1.05 }}
+          >
+            <img src="/unifestlogo.png" alt="" style={{ scale: 4.8 }} className="mt-3 ml-4" />
+          </motion.div>
           </div>
 
           {/* Mobile Menu Button */}

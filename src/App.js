@@ -10,6 +10,9 @@ import Login from './Pages/Login'
 import Passes from './Pages/Passes';
 import PassDetails from './Pages/PassDetails';
 import VerifyPass from './Pages/VerifyPass';
+import Participants from './Pages/Participants';
+import AdminPanel from './Pages/AdminPanel';
+
 
 
 // Register GSAP plugins
@@ -82,6 +85,8 @@ const App = () => {
         <Route path='/Passes' element={<Passes/>}/>
         <Route path='/myPasses' element={<PassDetails/>}/>
         <Route path='/verifyPass' element={<VerifyPass/>}/>
+        <Route path='/participants' element={<Participants/>}/>
+        <Route path='/adminPanel' element={<AdminPanel/>}/>
       </Routes>
     </Router>
     

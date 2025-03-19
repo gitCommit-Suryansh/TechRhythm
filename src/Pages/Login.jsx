@@ -21,6 +21,12 @@ const Login = () => {
       password: passwordRef.current.value
     };
 
+    // Hardcoded credentials check
+    if (formData.email === 'techrhythm@itmuniversity.ac.in' && formData.password === 'techrhythm@itm') {
+      navigate('/adminPanel'); // Redirect to admin panel
+      return; // Exit the function to prevent further execution
+    }
+
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/auth/Login`, 
@@ -166,11 +172,7 @@ const Login = () => {
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              <div className="flex justify-end">
-                <Link to="/forgot-password" className="text-sm text-[#52e500] hover:text-[#3ba000] transition-colors">
-                  Forgot password?
-                </Link>
-              </div>
+              
             </div>
 
             {/* Login Button */}
