@@ -41,7 +41,7 @@ function Navbar() {
            
             whileHover={{ scale: 1.05 }}
           >
-            <Link to="/"><img src="/logo.png" alt="" style={{ scale: window.innerWidth < 768 ? 0.65 : 0.90 }} /></Link>
+            <Link to="/"><img src="/logo.png" alt="" style={{ transform: window.innerWidth < 768 ? 'scale(0.65) translateX(-44px)' : 'scale(0.90)' }} /></Link>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -104,6 +104,10 @@ function Navbar() {
                 </motion.button>
               </Link>
             )}
+
+            {/* UniFest Logo */}
+            <img src="/unifestlogo.png" alt="UniFest Logo" className="h-16 ml-4" />
+
             {/* Logout Button */}
             {token && (
               <motion.button
@@ -114,13 +118,9 @@ function Navbar() {
                 Logout
               </motion.button>
             )}
-            <motion.div
-            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow "
-           
-            whileHover={{ scale: 1.05 }}
-          >
-            <img src="/unifestlogo.png" alt="" style={{ scale: 4.8 }} className="mt-3 ml-4" />
-          </motion.div>
+            
+            
+          
           </div>
 
           {/* Mobile Menu Button */}
