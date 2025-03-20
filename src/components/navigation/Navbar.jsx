@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -18,9 +17,9 @@ function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  // Add this state at the top of your App component
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const token = Cookies.get("token");
   const navigate = useNavigate();
 
@@ -35,13 +34,14 @@ function Navbar() {
         style={{ backgroundColor: navBackground }}
         className="fixed w-full z-50 transition-all duration-300 backdrop-blur-sm border-b border-[#52e500]/10"
       >
-        <div className="container mx-auto  py-6 flex justify-between items-center">
+        <div className="container mx-auto py-6 flex justify-between items-center">
           <motion.div
-            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow "
-           
+            className="text-base md:text-2xl font-['Press_Start_2P'] bg-gradient-to-r from-[#52e500] to-[#3ba000] bg-clip-text text-transparent pixel-shadow"
             whileHover={{ scale: 1.05 }}
           >
-            <Link to="/"><img src="/logo.png" alt="" style={{ transform: window.innerWidth < 768 ? 'scale(0.65) translateX(-44px)' : 'scale(0.90)' }} /></Link>
+            <Link to="/">
+              <img src="/logo.png" alt="Logo" style={{ scale: window.innerWidth < 768 ? 0.65 : 0.90 }} />
+            </Link>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -49,7 +49,13 @@ function Navbar() {
             {["About", "Events", "Speakers", "Schedule"].map((item, index) => (
               <motion.button
                 key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
+                onClick={() => {
+                  if (item === "Schedule") {
+                    setIsModalOpen(true);
+                  } else {
+                    scrollTo(item.toLowerCase());
+                  }
+                }}
                 className="relative group px-4 py-2"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: -20 }}
@@ -57,7 +63,7 @@ function Navbar() {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <span className="relative z-10 text-white group-hover:text-[#52e500] transition-colors duration-300 font-space-grotesk">
-                  <a href={`#${item.toLowerCase()}`}>{item}</a>
+                  {item}
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-[#52e500]/0 border border-[#52e500]/0 rounded-lg group-hover:bg-[#52e500]/5 group-hover:border-[#52e500]/50"
@@ -81,8 +87,7 @@ function Navbar() {
               </Link>
             )}
 
-            
-
+            {/* Register or Passes Button */}
             {!token ? (
               <Link to="/Signup">
                 <motion.button
@@ -105,7 +110,6 @@ function Navbar() {
               </Link>
             )}
 
-            
             {/* Logout Button */}
             {token && (
               <motion.button
@@ -116,13 +120,6 @@ function Navbar() {
                 Logout
               </motion.button>
             )}
-
-            {/* UniFest Logo */}
-            <img src="/unifestlogo.png" alt="UniFest Logo" className="h-16 ml-4" />
-
-            
-            
-          
           </div>
 
           {/* Mobile Menu Button */}
@@ -206,7 +203,7 @@ function Navbar() {
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    >
+                  >
                     Register Now
                   </motion.button>
                 </Link>
@@ -216,7 +213,7 @@ function Navbar() {
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    >
+                  >
                     Passes
                   </motion.button>
                 </Link>
@@ -228,12 +225,30 @@ function Navbar() {
                   className="w-full bg-[#52e500] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#3ba000] transition-colors mt-4"
                 >
                   Logout
-                </motion.button>  
+                </motion.button>
               )}
             </div>
           </motion.div>
         </div>
       </motion.nav>
+
+      {/* Modal for Schedule */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 overflow-auto">
+          <motion.div
+            className="bg-black rounded-lg p-4 max-w-md mx-auto overflow-auto"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+          >
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-2 right-14 text-[#52e500]">
+              &times;
+            </button>
+            <img src="/schedule.png" alt="Schedule" className={`w-full rounded-lg ${window.innerWidth > 768 ? 'scale-[250%]' : 'scale-[110%]'}`} />
+          </motion.div>
+        </div>
+      )}
     </>
   );
 }
