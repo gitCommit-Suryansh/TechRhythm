@@ -94,7 +94,7 @@ function Home() {
     },
     {
       name: "Nitin Khindria",
-      designation: "CHRO, Omega",
+      designation: "CHRO, Omega Seiki Mobility",
       image: "https://media.licdn.com/dms/image/v2/D5603AQE8GEKXxaT2tQ/profile-displayphoto-shrink_400_400/B56ZRFOx64HIAg-/0/1736328290658?e=1747872000&v=beta&t=V0wu-wJYJkekA2ZfUXuJ5YbaMOxOh3lxE8RJpOWLFxI",
       topic: "Industrial Insights",
     },
