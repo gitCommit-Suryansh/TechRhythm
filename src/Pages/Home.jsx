@@ -93,10 +93,10 @@ function Home() {
       topic: "Future of Cloud Computing",
     },
     {
-      name: "Priya Mehta",
-      designation: "Lead Developer, Google",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-      topic: "AI & Machine Learning",
+      name: "Nitin Khindria",
+      designation: "CHRO, Omega",
+      image: "https://media.licdn.com/dms/image/v2/D5603AQE8GEKXxaT2tQ/profile-displayphoto-shrink_400_400/B56ZRFOx64HIAg-/0/1736328290658?e=1747872000&v=beta&t=V0wu-wJYJkekA2ZfUXuJ5YbaMOxOh3lxE8RJpOWLFxI",
+      topic: "Industrial Insights",
     },
     {
       name: "Amit Sharma",
