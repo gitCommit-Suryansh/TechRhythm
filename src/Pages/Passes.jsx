@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Rocket, Crown, ArrowRight,Check,X } from "lucide-react";
+import { Shield, Rocket, Crown, ArrowRight,Check,X ,Diamond} from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 const Passes = () => {
@@ -34,9 +34,9 @@ const Passes = () => {
         { text: "Event Certificate", included: true },
         { text: "Seminar and Workshops", included: true },
         { text: "Goodies", included: true },
-        { text: "Breakfast", included: false },
-        { text: "Lunch and Dinner", included: false },
         { text: "Accommodation", included: false },
+        { text: "Breakfast", included: false },
+        { text: "Meals", included: false },
       ],
     },
     {
@@ -48,8 +48,23 @@ const Passes = () => {
         { text: "Access to All Tech Events", included: true },
         { text: "Event Certificate", included: true },
         { text: "Seminar and Workshops", included: true },
+        { text: "Goodies", included: true },
+        { text: "General Accommodation", included: true },
+        { text: "3 Meals/Day", included: true },
+        { text: "Priority Access", included: false },
+      ],
+    },
+    {
+      type: "PLATINUM",
+      icon: Diamond,
+      price: 1699,
+      color: "from-yellow-400 to-yellow-300",
+      features: [
+        { text: "Access to All Tech Events", included: true },
+        { text: "Event Certificate", included: true },
+        { text: "Seminar and Workshops", included: true },
         { text: "Premium Goodies", included: true },
-        { text: "Accommodation", included: true },
+        { text: "Premium Accommodation", included: true },
         { text: "3 Meals/Day", included: true },
         { text: "Priority Access", included: true },
       ],
@@ -89,8 +104,8 @@ const Passes = () => {
           </p>
         </motion.div>
 
-        {/* Passes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Passes Row */}
+        <div className="flex flex-col md:flex-row gap-8 max-w-8xl mx-auto overflow-x-auto">
           {passes.map((pass, index) => (
             <motion.div
               key={pass.type}
@@ -153,7 +168,9 @@ const Passes = () => {
             </motion.div>
           ))}
 
-          {selectedPass && (
+          
+        </div>
+        {selectedPass && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -173,7 +190,6 @@ const Passes = () => {
               </button>
             </motion.div>
           )}
-        </div>
       </div>
     </div>
   );
