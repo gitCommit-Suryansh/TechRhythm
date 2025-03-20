@@ -3,44 +3,51 @@ import { motion } from 'framer-motion';
 
 const sponsors = [
   {
-    name: "Infosys",
+    name: "Unstop",
     tier: "outer",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2880px-Google_2015_logo.svg.png",
+    logo: "/unstop.png",
     orbitRadius: 280,
     startAngle: 45
   },
   {
-    name: "Waterbridge",
+    name: "xyz",
     tier: "outer",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
+    logo: "xyz_logo2.png",
     orbitRadius: 280,
     startAngle: 135
   },
   {
-    name: "Freshworks",
+    name: "Sheryians coding school",
+    tier: "outer",
+    logo: "/sheryians_logo.jpeg",
+    orbitRadius: 280,
+    startAngle: 135
+  },
+  {
+    name: "gdg",
     tier: "middle",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png",
+    logo: "gdg_logo.jpg",
     orbitRadius: 180,
     startAngle: 45
   },
   {
-    name: "BIRAC",
+    name: "Plus 91 Labs",
     tier: "middle",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/2560px-Meta_Platforms_Inc._logo.svg.png",
+    logo: "/plus91labs_logo.jpeg",
     orbitRadius: 180,
     startAngle: 135
   },
   {
-    name: "ACCENTURE",
-    tier: "middle",
-    logo: "/accenture.png",
+    name: "techobytes",
+    tier: "outer",
+    logo: "/techobytes_logo.jpeg",
     orbitRadius: 180,
     startAngle: 225
   },
   {
-    name: "WIPRO",
+    name: "Numeric Infotech",
     tier: "middle",
-    logo: "/wipro.png",
+    logo: "/Numericinfotech_logo.jpeg",
     orbitRadius: 180,
     startAngle: 315
   },
@@ -52,9 +59,9 @@ const sponsors = [
     startAngle: 90
   },
   {
-    name: "COGNIZANT",
+    name: "xyz logo",
     tier: "outer",
-    logo: "/CTSH_BIG.png",
+    logo: "/xyz_logo2.png",
     orbitRadius: 280,
     startAngle: 225
   }
@@ -73,7 +80,7 @@ const SponsorsSection = () => {
               {/* Central Text */}
               <div className="absolute z-10 text-center">
                 <h2 className="text-4xl font-bold text-gray-500 leading-tight">
-                  PAST
+                  OUR
                   <br />
                   SPONSORS
                 </h2>
