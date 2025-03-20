@@ -64,6 +64,8 @@ const Passes = () => {
 
   // Redirect to a third-party link
   const handlePaymentRedirect = () => {
+    // Show an alert to remind the user to save or download the payment receipt
+    alert("Remember to Save or Download the Payment receipt");
     // Replace with your desired third-party link
     const thirdPartyLink = "https://onlineapply.itmuniversity.ac.in/events/Techrhythm.php"; 
     window.location.href = thirdPartyLink;
