@@ -105,9 +105,7 @@ function Navbar() {
               </Link>
             )}
 
-            {/* UniFest Logo */}
-            <img src="/unifestlogo.png" alt="UniFest Logo" className="h-16 ml-4" />
-
+            
             {/* Logout Button */}
             {token && (
               <motion.button
@@ -118,6 +116,10 @@ function Navbar() {
                 Logout
               </motion.button>
             )}
+
+            {/* UniFest Logo */}
+            <img src="/unifestlogo.png" alt="UniFest Logo" className="h-16 ml-4" />
+
             
             
           
