@@ -488,7 +488,7 @@ function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {bonusEvents.map((event, index) => (
-                <Link to={event.link} key={index}>
+                <a href={event.link} key={index}>
                   <motion.div
                     className="event-card"
                     style={{ opacity: 0, y: 50 }}
@@ -550,7 +550,7 @@ function Home() {
                       </div>
                     </div>
                   </motion.div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
