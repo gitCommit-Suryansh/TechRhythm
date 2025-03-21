@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { ArrowRight, Mail, Lock, Eye, EyeOff ,Cpu} from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
   const emailRef = useRef();
@@ -15,6 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     const formData = {
       email: emailRef.current.value,
@@ -24,6 +26,7 @@ const Login = () => {
     // Hardcoded credentials check
     if (formData.email === 'techrhythm@itmuniversity.ac.in' && formData.password === 'techrhythm@itm') {
       navigate('/adminPanel'); // Redirect to admin panel
+      setLoading(false);
       return; // Exit the function to prevent further execution
     }
 
@@ -57,8 +60,26 @@ const Login = () => {
         // Other errors
         setError('An error occurred. Please try again');
       }
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center text-white">
+      <motion.div 
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 0.8 }}
+          transition={{ duration: 0.5 }}
+          className="text-xl flex items-center space-x-3"
+      >
+          <Cpu className="animate-pulse text-[#52e500]" />
+          <span>Loading ...</span>
+      </motion.div>
+  </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden py-20">
@@ -172,7 +193,6 @@ const Login = () => {
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              
             </div>
 
             {/* Login Button */}
@@ -207,4 +227,5 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;
+

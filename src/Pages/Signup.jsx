@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Lock, User, Eye, EyeOff, School, Phone } from 'lucide-react';
+import { ArrowRight, Mail, Lock, User, Eye, EyeOff, School, Phone ,Cpu} from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
   // Create refs for form fields
@@ -20,10 +21,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
     // Basic validation
     if (!termsRef.current.checked) {
       setError('Please accept the terms and conditions');
+      setLoading(false);
       return;
     }
 
@@ -38,16 +41,35 @@ const Signup = () => {
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/Signup`, formData);
-      if (response.status===200) {
+      if (response.status === 200) {
         // Redirect to login page on successful signup
         navigate('/Login');
       } else {
-        setError(response.message || 'Signup failed');
+        setError(response.data.message || 'Signup failed');
       }
-    } catch (err) {
-      setError('Network error, please try again');
+    } catch (error) {
+      setError(error.response.data.message || 'Signup failed');
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+        <div className="min-h-screen bg-black flex items-center justify-center text-white">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 0.8 }}
+                transition={{ duration: 0.5 }}
+                className="text-xl flex items-center space-x-3"
+            >
+                <Cpu className="animate-pulse text-[#52e500]" />
+                <span>Loading ...</span>
+            </motion.div>
+        </div>
+    );
+}
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden py-20">
@@ -264,4 +286,5 @@ const Signup = () => {
   );
 };
 
-export default Signup; 
+export default Signup;
+

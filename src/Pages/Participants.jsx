@@ -156,6 +156,7 @@ const Participants = () => {
                 <th className="py-3 px-4 border-b text-left">College</th>
                 <th className="py-3 px-4 border-b text-left">Pass ID</th>
                 <th className="py-3 px-4 border-b text-left">Pass Type</th>
+                <th className="py-3 px-4 border-b text-left">Pass Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -168,6 +169,7 @@ const Participants = () => {
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.college}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.passId || 'null'}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.passType || 'null'}</td>
+                    <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.passAmount || 'null'}</td>
                   </tr>
                   {expandedRow === index && (
                     <tr>
@@ -190,6 +192,7 @@ const Participants = () => {
                               <option value="BRONZE">BRONZE</option>
                               <option value="SILVER">SILVER</option>
                               <option value="GOLD">GOLD</option>
+                              <option value="PLATINUM">PLATINUM</option>
                             </select>
                           </div>
                           <button onClick={() => handleSave(participant._id)} className="bg-green-500 text-white p-2 rounded mt-2">
