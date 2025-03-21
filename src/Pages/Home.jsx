@@ -321,16 +321,7 @@ function Home() {
                 </a>
               )}
 
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(82, 229, 0, 0.1)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="border border-[#52e500] px-8 py-3 rounded-full transition-all duration-300 text-[#52e500] hover:shadow-lg hover:shadow-[#52e500]/20"
-              >
-                Learn More
-              </motion.button>
+              <a href="https://itmuniversity.ac.in"></a>
             </motion.div>
 
             {/* Add floating tech elements */}

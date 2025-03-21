@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/navigation/Navbar';
 import axios from 'axios'
+import '../App.css'
 
 const Participants = () => {
+
   const [participants, setParticipants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,6 +13,16 @@ const Participants = () => {
   const [passId, setPassId] = useState('');
   const [passType, setPassType] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginId, setLoginId] = useState('');
+
+  const handleLogin = () => {
+    if (loginId === '3admin') {
+      setIsLoggedIn(true);
+    } else {
+      alert('Invalid login ID. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const fetchParticipants = async () => {
@@ -30,8 +42,10 @@ const Participants = () => {
       }
     };
 
-    fetchParticipants();
-  }, []);
+    if (isLoggedIn) {
+      fetchParticipants();
+    }
+  }, [isLoggedIn]);
 
   const handleRowClick = (index) => {
     setExpandedRow(expandedRow === index ? null : index);
@@ -68,8 +82,32 @@ const Participants = () => {
   const totalWithPassId = participants.filter(participant => participant.passId).length;
   const totalCheckedIn = participants.filter(participant => participant.checkedIn === true).length;
 
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="bg-gray-800 p-8 rounded shadow-md">
+          <h2 className="text-xl mb-4">Login</h2>
+          <input
+            type="text"
+            placeholder="Enter Login ID"
+            value={loginId}
+            onChange={(e) => setLoginId(e.target.value)}
+            className="mb-4 p-2 rounded text-black"
+          />
+          <button onClick={handleLogin} className="bg-green-500 text-white p-2 rounded">
+            OK
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
-    return <div className="text-center text-white">Loading participants...</div>;
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   if (error) {
@@ -78,7 +116,7 @@ const Participants = () => {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <div className="min-h-screen bg-black text-white py-32 relative overflow-hidden">
       
       <div className="container mx-auto px-4">
