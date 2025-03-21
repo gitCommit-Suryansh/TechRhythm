@@ -232,22 +232,22 @@ function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Modal for Schedule */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 overflow-auto">
-          <motion.div
-            className="bg-black rounded-lg p-4 max-w-md mx-auto overflow-auto"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-          >
-            <button onClick={() => setIsModalOpen(false)} className="absolute top-2 right-14 text-[#52e500]">
-              &times;
-            </button>
-            <img src="/schedule.png" alt="Schedule" className={`w-full rounded-lg ${window.innerWidth > 768 ? 'scale-[250%]' : 'scale-[110%]'}`} />
-          </motion.div>
-        </div>
+        {/* Modal for Schedule visible on desktop but not on mobile screen */}
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70 overflow-auto">
+            <motion.div
+              className="bg-black rounded-lg p-4 mx-auto overflow-auto"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <button onClick={() => setIsModalOpen(false)} className="absolute top-2 right-14 text-[#52e500]">
+                &times;
+              </button>
+              <img src="/schedule.png" alt="Schedule" className="w-full rounded-lg" />
+            </motion.div>
+          </div>
       )}
     </>
   );
