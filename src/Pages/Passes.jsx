@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, Rocket, Crown, ArrowRight,Check,X ,Diamond} from "lucide-react";
+import {
+  Shield,
+  Rocket,
+  Crown,
+  ArrowRight,
+  Check,
+  X,
+  Diamond,
+} from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 const Passes = () => {
@@ -71,10 +79,11 @@ const Passes = () => {
     },
   ];
 
-  // Handle pass selection and update total amount
+  // Handle pass selection and redirect to payment
   const handlePassSelection = (pass) => {
     setSelectedPass(pass.type);
     setTotalAmount(pass.price);
+    handlePaymentRedirect(); // Automatically redirect to payment
   };
 
   // Redirect to a third-party link
@@ -82,7 +91,8 @@ const Passes = () => {
     // Show an alert to remind the user to save or download the payment receipt
     alert("Remember to Save or Download the Payment receipt");
     // Replace with your desired third-party link
-    const thirdPartyLink = "https://onlineapply.itmuniversity.ac.in/events/Techrhythm.php"; 
+    const thirdPartyLink =
+      "https://onlineapply.itmuniversity.ac.in/events/Techrhythm.php";
     window.location.href = thirdPartyLink;
   };
 
@@ -112,19 +122,32 @@ const Passes = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative ${selectedPass === pass.type ? "scale-105" : ""}`}
+              className={`relative ${
+                selectedPass === pass.type ? "scale-105" : ""
+              }`}
               style={{ zIndex: 2 }}
             >
+              {/* Position the selling out message at the absolute top left of the card */}
+              {(pass.type === "GOLD" || pass.type === "SILVER") && (
+                <div className="absolute top-7 -left-3 z-10 -rotate-45">
+                  <div className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">
+                    SELLING OUT FAST!
+                  </div>
+                </div>
+              )}
+
               <motion.div
                 className={`h-full bg-gradient-to-br from-black/80 to-[#52e500]/5 backdrop-blur-xl rounded-xl p-8 border ${
-                  selectedPass === pass.type ? "border-[#52e500]" : "border-[#52e500]/20"
+                  selectedPass === pass.type
+                    ? "border-[#52e500]"
+                    : "border-[#52e500]/20"
                 } hover:border-[#52e500] transition-all duration-300 cursor-pointer`}
-                onClick={() => handlePassSelection(pass)}
+                onClick={() => handlePassSelection(pass)} // Automatically redirect on click
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Pass Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 relative">
                   <div
                     className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${pass.color} p-3 flex items-center justify-center`}
                   >
@@ -133,6 +156,7 @@ const Passes = () => {
                   <h3 className="text-2xl font-['Press_Start_2P'] text-[#52e500] mb-2">
                     {pass.type}
                   </h3>
+
                   <div className="flex items-center justify-center gap-1">
                     <span className="text-3xl font-bold">₹</span>
                     <span className="text-4xl font-bold">{pass.price}</span>
@@ -142,8 +166,15 @@ const Passes = () => {
                 {/* Features List */}
                 <ul className="space-y-4 mb-8">
                   {pass.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3 text-gray-300">
-                      <span className={`font-space-grotesk flex ${feature.included ? 'text-green-500' : 'text-red-500'}`}>
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-gray-300"
+                    >
+                      <span
+                        className={`font-space-grotesk flex ${
+                          feature.included ? "text-green-500" : "text-red-500"
+                        }`}
+                      >
                         {feature.included ? <Check /> : <X />}
                         {feature.text}
                       </span>
@@ -167,29 +198,27 @@ const Passes = () => {
               </motion.div>
             </motion.div>
           ))}
-
-          
         </div>
         {selectedPass && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center mt-12 space-y-4 md:col-start-2 md:col-span-1"
-              style={{ zIndex: 2 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mt-12 space-y-4 md:col-start-2 md:col-span-1"
+            style={{ zIndex: 2 }}
+          >
+            <div className="text-xl font-space-grotesk text-[#52e500]">
+              Total Amount: ₹{totalAmount}
+            </div>
+            <button
+              onClick={handlePaymentRedirect} // Redirect to third-party link
+              className="bg-gradient-to-r from-[#52e500] to-blue-500 text-black px-8 py-3 rounded-lg font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 mx-auto group"
+              style={{ zIndex: 3 }}
             >
-              <div className="text-xl font-space-grotesk text-[#52e500]">
-                Total Amount: ₹{totalAmount}
-              </div>
-              <button
-                onClick={handlePaymentRedirect} // Redirect to third-party link
-                className="bg-gradient-to-r from-[#52e500] to-blue-500 text-black px-8 py-3 rounded-lg font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 mx-auto group"
-                style={{ zIndex: 3 }}
-              >
-                Continue to Payment
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
-          )}
+              Continue to Payment
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );

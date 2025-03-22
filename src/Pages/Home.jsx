@@ -92,7 +92,6 @@ function Home() {
       link: "/events/book-fair",
     },
   ];
-  // Speakers data
   const speakers = [
     {
       name: "Harsh Vandana Sharma",
@@ -306,6 +305,7 @@ function Home() {
                   </motion.button>
                 </a>
               ) : (
+                <>
                 <a href="/Signup" className="no-underline">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -319,6 +319,20 @@ function Home() {
                     />
                   </motion.button>
                 </a>
+                <a href="/Signup" className="no-underline">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full md:w-auto bg-gradient-to-r from-[#52e500] to-blue-500 px-8 py-3 rounded-full text-black font-bold hover:from-blue-500 hover:to-[#52e500] transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-[#52e500]/20"
+                  >
+                    <span className="text-black">Register Now</span>
+                    <ArrowRight
+                      className="group-hover:translate-x-1 transition-transform"
+                      size={20}
+                    />
+                  </motion.button>
+                </a>
+                </>
               )}
 
               <a href="https://itmuniversity.ac.in"></a>
