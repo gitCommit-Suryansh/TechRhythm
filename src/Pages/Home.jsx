@@ -97,7 +97,7 @@ function Home() {
       name: "Harsh Vandana Sharma",
       designation: "Sheryians Coding School -Youtuber",
       image: "/harsh_sharma.png",
-      topic: "Future of Cloud Computing",
+      topic: "Future of Coding",
     },
     {
       name: "Nitin Khindria",
@@ -106,10 +106,10 @@ function Home() {
       topic: "Industrial Insights",
     },
     {
-      name: "Amit Sharma",
-      designation: "CTO, TechStartup India",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-      topic: "Emerging Technologies",
+      name: "Tushar Dhawan",
+      designation: "CEO,Plus91Labs",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQFPsiBlNp9EWA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1687869749096?e=1748476800&v=beta&t=-GMGDXuWgN06Bo30ZjyF2gES9RdML3lfyX8YKjZ_G3U",
+      topic: "AI and Startups",
     },
   ];
 

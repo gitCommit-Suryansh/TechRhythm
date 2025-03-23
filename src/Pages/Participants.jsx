@@ -79,6 +79,7 @@ const Participants = () => {
   });
 
   // Calculate statistics
+  const totalParticipants = participants.length; // Total number of participants
   const totalWithPassId = participants.filter(participant => participant.passId).length;
   const totalCheckedIn = participants.filter(participant => participant.checkedIn === true).length;
 
@@ -116,7 +117,7 @@ const Participants = () => {
 
   return (
     <>
-    {/* <Navbar /> */}
+    <Navbar />
     <div className="min-h-screen bg-black text-white py-32 relative overflow-hidden">
       
       <div className="container mx-auto px-4">
@@ -133,6 +134,7 @@ const Participants = () => {
         <div className="flex justify-between mb-4">
           <div className="flex-grow"></div> {/* Empty div to push stats to the right */}
           <div className="bg-gray-800 p-4 rounded shadow-md text-right">
+            <p className="text-green-400">Total Participants: <span className="text-white">{totalParticipants}</span></p>
             <p className="text-green-400">Pass ID Enrolled: <span className="text-white">{totalWithPassId}</span></p>
             <p className="text-green-400">Checked-In Participants: <span className="text-white">{totalCheckedIn}</span></p>
           </div>
