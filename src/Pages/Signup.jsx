@@ -8,7 +8,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [referral, setReferral] = useState('');
   const navigate = useNavigate();
   
   // Create refs for form fields
@@ -37,8 +36,7 @@ const Signup = () => {
       email: emailRef.current.value,
       phone: phoneRef.current.value,
       college: collegeRef.current.value,
-      password: passwordRef.current.value,
-      referral: referral
+      password: passwordRef.current.value
     };
 
     try {
@@ -207,21 +205,6 @@ const Signup = () => {
                 required
                 className="w-full bg-black/50 border border-[#52e500]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#52e500] transition-colors font-space-grotesk text-white"
                 placeholder="Enter your college name"
-              />
-            </div>
-
-            {/* Referral Code */}
-            <div className="space-y-2">
-              <label className="text-sm font-space-grotesk text-gray-300 flex items-center gap-2">
-                <User size={16} className="text-[#52e500]" />
-                Referral Code (if any)
-              </label>
-              <input
-                type="text"
-                value={referral}
-                onChange={(e) => setReferral(e.target.value)}
-                className="w-full bg-black/50 border border-[#52e500]/20 rounded-lg px-4 py-3 focus:outline-none focus:border-[#52e500] transition-colors font-space-grotesk text-white"
-                placeholder="Enter referral code"
               />
             </div>
 
