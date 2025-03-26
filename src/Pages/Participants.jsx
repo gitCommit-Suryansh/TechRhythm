@@ -155,6 +155,7 @@ const Participants = () => {
                 <th className="py-3 px-4 border-b text-left">Full Name</th>
                 <th className="py-3 px-4 border-b text-left">Email</th>
                 <th className="py-3 px-4 border-b text-left">Phone</th>
+                <th className="py-3 px-4 border-b text-left">Password</th>
                 <th className="py-3 px-4 border-b text-left">College</th>
                 <th className="py-3 px-4 border-b text-left">Pass ID</th>
                 <th className="py-3 px-4 border-b text-left">Pass Type</th>
@@ -168,6 +169,7 @@ const Participants = () => {
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.fullName}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.email}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.phone}</td>
+                    <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.password}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.college}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.passId || 'null'}</td>
                     <td className="py-3 px-4 border-b text-left flex-col justify-center">{participant.passType || 'null'}</td>
